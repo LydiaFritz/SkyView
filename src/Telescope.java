@@ -61,6 +61,9 @@ public class Telescope {
 				System.out.println();
 			}
 			
+			//see the average
+			System.out.println("Average = " + getAverage(skyview, 0, 0, 1, 1));
+			
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -68,6 +71,18 @@ public class Telescope {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static double getAverage(double[][]view, int startR, int startC, int endR, int endC) {
+		double avg = 0.0;
+		int count = 0;
+		for(int r = startR; r <= endR; r++) {
+			for(int c = startC; c <= endC; c++) {			
+				avg += view[r][c];
+				count++;
+			}
+		}
+		return avg/count;
 	}
 
 }
