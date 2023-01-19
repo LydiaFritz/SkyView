@@ -16,9 +16,10 @@ public class Telescope {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
 		// TODO Auto-generated method stub
 		try {
-			Scanner fin = new Scanner(new File("input.in"));
+			Scanner fin = new Scanner(new File("bigInput.in"));
 			//get the size of the array
 			int rows = fin.nextInt(), cols = fin.nextInt();
 			//make the array
