@@ -20,18 +20,48 @@ public class Telescope {
 		try {
 			Scanner fin = new Scanner(new File("input.in"));
 			//get the size of the array
-			int sz = fin.nextInt();
+			int rows = fin.nextInt(), cols = fin.nextInt();
 			//make the array
-			double [] values = new double[sz];
+			double [] values = new double[rows*cols];
 			//scan the values
-			for(int i = 0; i < sz; i++) {
+			for(int i = 0; i < rows*cols; i++) {
 				values[i] = fin.nextDouble();
 			}
 			
-			//check the input array
-			for(int i = 0; i< sz; i++) {
-				System.out.printf("%.1f ", values[i]);
+			/*
+			 * //check the input array for(int i = 0; i< rows*cols; i++) {
+			 * System.out.printf("%.1f ", values[i]); } System.out.println();
+			 */
+			
+			//create the 2-d array
+			double [][] skyview = new double[rows][cols];
+			
+			//if row is even, go from left to right
+			//if row is odd, go from right to left
+			int index = 0;
+			for(int r = 0; r < rows; r++) {
+				if(r%2 == 0) {
+					for(int c = 0; c < cols; c++) {
+						skyview[r][c] = values[index++];
+					}
+				}
+				else {
+					for(int c = cols-1; c >= 0; c--) {
+						skyview[r][c] = values[index++];
+					}
+					
+				}
 			}
+			
+			//print the 2-d array
+			for(int r = 0; r < rows; r++) {
+				for(int c = 0; c < cols; c++) {
+					System.out.printf("%.1f  ", skyview[r][c]);
+				}
+				System.out.println();
+			}
+			
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("File not found.\n");
